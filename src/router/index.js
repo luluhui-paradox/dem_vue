@@ -51,6 +51,11 @@ export default new VueRouter({
             component:()=>import('../components/drugRequest/addNewDrugRequest.vue')
         },
         {
+            path:'/drugRequest/drugRequestDetail',
+            name:'drugRequestDetail',
+            component:()=>import('../components/drugRequest/drugRequestDetail.vue')
+        },
+        {
             path:'/retailer/addNewRetailer',
             name:'addNewReatailer',
             component:()=>import('../components/retailer/addNewRetailer.vue')

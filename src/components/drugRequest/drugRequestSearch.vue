@@ -17,7 +17,6 @@
                         disabled="true">
                 </mt-field>
             </span>
-            <mt-field type="date" label="申请日期" placeholder="请选择申请日期" v-model="drugRequestInfo.requestDate"></mt-field>
             <p>
                 <mt-button size="large" type="primary" @click="searchDrugRequest">查询</mt-button>
             </p>
@@ -90,7 +89,7 @@
                 let tt=this;
                 this.$indicator.open('查询中');
                 setTimeout(()=>{tt.$indicator.close();},2000);
-                let url=this.teacherStatus==1?"http://dem.luluhui.cf/drug/selectDrugProcurementFormTeacher":"http://dem.luluhui.cf/drug/selectDrugProcurementFormStudent";
+                let url=this.teacherStatus==1?"http://dem.luluhui.cf/drug/selectDrugRequestFormTeacher":"http://dem.luluhui.cf/drug/selectDrugRequestFormStudent";
                 this.$http.post(url,this.drugRequestInfo,{emulateJSON:true,headers:{token:localStorage.getItem('token')}})
                     .then(function (res) {
                         tt.requestList=res.data;
@@ -110,13 +109,13 @@
                 for(let i=0; i<this.requestList.length; i++){
                     for(let j=0;j<tt.scrutinyMap.length;j++){
                         if (tt.scrutinyMap[j].value==tt.requestList[i].scrutinyPeopleId){
-                            tt.requestList[i].prototype.scrutinyName=tt.scrutinyMap[j].label;
+                            tt.requestList[i].scrutinyName=tt.scrutinyMap[j].label;
                         }
                         break;
                     }
                     for(let j=0;j<tt.studentMap.length;j++){
                         if (tt.studentMap[j].value==tt.requestList[i].requestPeopleId){
-                            tt.requestList[i].prototype.requestPeopleName=tt.studentMap[j].label;
+                            tt.requestList[i].requestPeopleName=tt.studentMap[j].label;
                         }
                         break;
                     }
