@@ -56,6 +56,21 @@ export default new VueRouter({
             component:()=>import('../components/drugRequest/drugRequestDetail.vue')
         },
         {
+            path:'/drugProcurement/drugProcurementSearch',
+            name:'drugProcurementSearch',
+            component:()=>import('../components/drugProcurement/drugProcurementSearch.vue')
+        },
+        {
+            path:'/drugProcurement/addNewDrugProcurement',
+            name:'addNewDrugRequest',
+            component:()=>import('../components/drugProcurement/addNewDrugProcurement.vue')
+        },
+        {
+            path:'/drugProcurement/drugProcurementDetail',
+            name:'drugProcurementDetail',
+            component:()=>import('../components/drugProcurement/drugProcurementDetail.vue')
+        },
+        {
             path:'/retailer/addNewRetailer',
             name:'addNewReatailer',
             component:()=>import('../components/retailer/addNewRetailer.vue')

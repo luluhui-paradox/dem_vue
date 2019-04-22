@@ -82,7 +82,7 @@
               <mt-cell to="/drug/queryDrug" is-link title="药品查询"></mt-cell>
               <mt-cell to="/drug/addNewDrug" is-link title="添加药品"></mt-cell>
               <mt-cell to="/drugRequest/drugRequestSearch" is-link title="药品领用"></mt-cell>
-              <mt-cell to="" is-link title="药品采购"></mt-cell>
+              <mt-cell to="/drugProcurement/drugProcurementSearch" is-link title="药品采购"></mt-cell>
             </mt-popup>
             <mt-popup v-model="studentFunctionList.primerStatus">
               <mt-cell to="" is-link title="引物申请查询"></mt-cell>
@@ -111,7 +111,7 @@
               <mt-cell to="/drug/queryDrug" is-link title="药品查询"></mt-cell>
               <mt-cell to="/drug/addNewDrug" is-link title="添加药品"></mt-cell>
               <mt-cell to="/drugRequest/drugRequestSearch" is-link title="药品领用处理"></mt-cell>
-              <mt-cell to="" is-link title="药品采购处理"></mt-cell>
+              <mt-cell to="/drugProcurement/drugProcurementSearch" is-link title="药品采购处理"></mt-cell>
             </mt-popup>
             <mt-popup v-model="teacherFunctionList.primerStatus">
               <mt-cell to="" is-link title="引物申请处理"></mt-cell>
