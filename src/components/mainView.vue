@@ -18,7 +18,7 @@
       <mt-tab-container v-model="selectItem">
         <mt-tab-container-item id="mainWebView">
           <mt-cell title="当前药品申请单" to="/drugRequest/drugRequestSearch" is-link>{{listNumber.drugRequestNumber}}份</mt-cell>
-          <mt-cell title="当前引物申请" to="" is-link>{{listNumber.primerNumber}}份</mt-cell>
+          <mt-cell title="当前引物申请" to="/primer/primerSearch" is-link>{{listNumber.primerNumber}}份</mt-cell>
           <mt-cell title="当前测序申请" to="" is-link>{{listNumber.sequenceNumber}}份</mt-cell>
           <mt-cell title="组会日程" to="" is-link value="更多"></mt-cell>
           <el-table :data="listNumber.conferenceList">
@@ -85,7 +85,7 @@
               <mt-cell to="/drugProcurement/drugProcurementSearch" is-link title="药品采购"></mt-cell>
             </mt-popup>
             <mt-popup v-model="studentFunctionList.primerStatus">
-              <mt-cell to="" is-link title="引物申请查询"></mt-cell>
+              <mt-cell to="/primer/primerSearch" is-link title="引物申请查询"></mt-cell>
               <mt-cell to="" is-link title="添加引物申请"></mt-cell>
             </mt-popup>
             <mt-popup v-model="studentFunctionList.sequenceStatus">
@@ -114,8 +114,8 @@
               <mt-cell to="/drugProcurement/drugProcurementSearch" is-link title="药品采购处理"></mt-cell>
             </mt-popup>
             <mt-popup v-model="teacherFunctionList.primerStatus">
-              <mt-cell to="" is-link title="引物申请处理"></mt-cell>
-              <mt-cell to="" is-link title="引物申请查询"></mt-cell>
+              <mt-cell to="/primer/primerSearch" is-link title="引物申请处理"></mt-cell>
+              <mt-cell to="/primer/primerSearch" is-link title="引物申请查询"></mt-cell>
             </mt-popup>
             <mt-popup v-model="teacherFunctionList.sequenceStatus">
               <mt-cell to="" is-link title="测序申请处理"></mt-cell>

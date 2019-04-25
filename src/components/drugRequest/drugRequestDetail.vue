@@ -70,8 +70,11 @@
             },
             doTeacherModify(){
                 let tt=this;
-                this.$indicator.open("提交中")
-                setTimeout(()=>{tt.$indicator.close(),2000});
+                //日期初始化
+                this.drugRequestInfo.requestDate=this.drugRequestInfo.requestDate.slice(0,10);
+                this.drugRequestInfo.receiveDate=this.drugRequestInfo.receiveDate.slice(0,10);
+                this.$indicator.open("提交中");
+                setTimeout(()=>{tt.$indicator.close()},2000);
                 this.$http.post('http://dem.luluhui.cf/drug/proceedDrugRequest',
                     {
                         drugRequestFormId:this.drugRequestInfo.drugRequestFormId,

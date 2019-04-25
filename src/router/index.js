@@ -6,75 +6,108 @@ Vue.use(VueRouter); //Vue全局使用Router
 export default new VueRouter({
     routes:[
         {
+            //主页
             path:'/',
             name:'mainView',
             component:()=>import('../components/mainView.vue')
         },
         {
+            //登录
             path:'/login',
             name:'login',
             component:()=>import('../components/login.vue')
         },
         {
+            //修改密码
             path:'/passwordModify',
             name:'passwordModify',
             component:()=>import('../components/passwordModify.vue')
         },
+        /*****************药品模块*******************/
         {
+            //药品查询
             path:'/drug/queryDrug',
             name:'queryDrug',
             component:()=>import('../components/drug/drugSearch.vue')
         },
         {
+            //药品详情
             path:'/drug/drugDetail',
             name:'drugDetail',
             component:()=>import('../components/drug/drugDetail.vue')
         },
         {
+            //药品修改
             path:'/drug/drugModify',
             name:'drugModify',
             component:()=>import('../components/drug/drugModify.vue')
         },
         {
+            //添加药品
             path:'/drug/addNewDrug',
             name:'addNewDrug',
             component:()=>import('../components/drug/addNewDrug.vue')
         },
         {
+            //药品领用单查询
             path:'/drugRequest/drugRequestSearch',
             name:'drugRequestSearch',
             component:()=>import('../components/drugRequest/drugRequestSearch.vue')
         },
         {
+            //添加药品领用单
             path:'/drugRequest/addNewDrugRequest',
             name:'addNewDrugRequest',
             component:()=>import('../components/drugRequest/addNewDrugRequest.vue')
         },
         {
+            //药品领用单详情
             path:'/drugRequest/drugRequestDetail',
             name:'drugRequestDetail',
             component:()=>import('../components/drugRequest/drugRequestDetail.vue')
         },
         {
+            //药品采购单查询
             path:'/drugProcurement/drugProcurementSearch',
             name:'drugProcurementSearch',
             component:()=>import('../components/drugProcurement/drugProcurementSearch.vue')
         },
         {
+            //添加药品采购单
             path:'/drugProcurement/addNewDrugProcurement',
-            name:'addNewDrugRequest',
+            name:'addNewDrugProcurement',
             component:()=>import('../components/drugProcurement/addNewDrugProcurement.vue')
         },
         {
+            //药品采购单详情
             path:'/drugProcurement/drugProcurementDetail',
             name:'drugProcurementDetail',
             component:()=>import('../components/drugProcurement/drugProcurementDetail.vue')
         },
         {
+            //添加经销商
             path:'/retailer/addNewRetailer',
             name:'addNewReatailer',
             component:()=>import('../components/retailer/addNewRetailer.vue')
+        },
+        /*****************引物测序模块*******************/
+        {
+            //引物查询
+            path:'/primer/primerSearch',
+            name:'primerSearch',
+            component:()=>import('../components/primer/primerSearch.vue')
+        },
+        {
+            //引物详情
+            path:'/primer/primerDetail',
+            name:'primerDetail',
+            component:()=>import('../components/primer/primerDetail.vue')
+        },
+        //添加新引物
+        {
+            path:'/primer/addNewPrimer',
+            name:'addNewPrimer',
+            component:()=>import('../components/primer/addNewPrimer.vue')
         }
-
     ]
 })

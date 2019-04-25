@@ -90,7 +90,6 @@
                     tt.manufactorDetail={};
                     this.$toast("我加载了，加载不出来，有什么好说的")
                 })
-
         }
     }
 
