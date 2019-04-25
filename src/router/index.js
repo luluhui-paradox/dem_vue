@@ -108,6 +108,24 @@ export default new VueRouter({
             path:'/primer/addNewPrimer',
             name:'addNewPrimer',
             component:()=>import('../components/primer/addNewPrimer.vue')
+        },
+        //测序查询
+        {
+            path:'/sequence/sequenceSearch',
+            name:'sequenceSearch',
+            component:()=>import('../components/sequence/sequenceSearch.vue')
+        },
+        //添加新测序申请
+        {
+            path:'/sequence/addNewSequence',
+            name:'addNewSequence',
+            component:()=>import('../components/sequence/addNewSequence.vue')
+        },
+        {
+            path:'/sequence/sequenceDetail',
+            name:'sequenceDetail',
+            component:()=>import('../components/sequence/sequenceDetail.vue')
+
         }
     ]
 })
