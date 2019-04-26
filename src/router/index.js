@@ -125,7 +125,26 @@ export default new VueRouter({
             path:'/sequence/sequenceDetail',
             name:'sequenceDetail',
             component:()=>import('../components/sequence/sequenceDetail.vue')
-
+        },
+        /*****************组会模块*******************/
+        //组会日程查询
+        {
+            path:'/conference/conferenceSearch',
+            name:'conferenceSearch',
+            component:()=>import('../components/conference/conferenceSearch.vue')
+        },
+        //添加新组会
+        {
+            path:'/conference/addNewConference',
+            name:'addNewConference',
+            component:()=>import('../components/conference/addNewConference.vue')
+        },
+        //组会日程详情
+        {
+            path:'/conference/conferenceDetail',
+            name:'conferenceDetail',
+            component:()=>import('../components/conference/conferenceDetail.vue')
         }
+
     ]
 })

@@ -20,7 +20,7 @@
           <mt-cell title="当前药品申请单" to="/drugRequest/drugRequestSearch" is-link>{{listNumber.drugRequestNumber}}份</mt-cell>
           <mt-cell title="当前引物申请" to="/primer/primerSearch" is-link>{{listNumber.primerNumber}}份</mt-cell>
           <mt-cell title="当前测序申请" to="/sequence/sequenceSearch" is-link>{{listNumber.sequenceNumber}}份</mt-cell>
-          <mt-cell title="组会日程" to="" is-link value="更多"></mt-cell>
+          <mt-cell title="组会日程" to="/conference/conferenceSearch" is-link value="更多"></mt-cell>
           <el-table :data="listNumber.conferenceList">
             <el-table-column prop="subject" label="项目名称"></el-table-column>
             <el-table-column prop="recordPeople" label="报告人"></el-table-column>
@@ -93,8 +93,7 @@
               <mt-cell to="/sequence/addNewSequence" is-link title="添加测序申请"></mt-cell>
             </mt-popup>
             <mt-popup v-model="studentFunctionList.conferenceStatus">
-              <mt-cell to="" is-link title="组会日程查询"></mt-cell>
-              <mt-cell to="" is-link title="申请新组会"></mt-cell>
+              <mt-cell to="/conference/conferenceSearch" is-link title="组会日程查询"></mt-cell>
             </mt-popup>
             <mt-popup v-model="studentFunctionList.bookStatus">
               <mt-cell to="" is-link title="书籍查询"></mt-cell>
@@ -122,9 +121,9 @@
               <mt-cell to="/sequence/sequenceSearch" is-link title="测序申请查询"></mt-cell>
             </mt-popup>
             <mt-popup v-model="teacherFunctionList.conferenceStatus">
-              <mt-cell to="" is-link title="组会日程查询"></mt-cell>
-              <mt-cell to="" is-link title="组会日程处理"></mt-cell>
-              <mt-cell to="" is-link title="创建新组会"></mt-cell>
+              <mt-cell to="/conference/conferenceSearch" is-link title="组会日程查询"></mt-cell>
+              <mt-cell to="/conference/conferenceSearch" is-link title="组会日程处理"></mt-cell>
+              <mt-cell to="/conference/addNewConference" is-link title="创建新组会"></mt-cell>
             </mt-popup>
             <mt-popup v-model="teacherFunctionList.bookStatus">
               <mt-cell to="" is-link title="书籍查询"></mt-cell>
