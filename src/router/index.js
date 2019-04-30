@@ -23,6 +23,12 @@ export default new VueRouter({
             name:'passwordModify',
             component:()=>import('../components/passwordModify.vue')
         },
+        {
+            //充值模块
+            path:'/pay',
+            name:'pay',
+            component:()=>import('../components/pay.vue')
+        },
         /*****************药品模块*******************/
         {
             //药品查询

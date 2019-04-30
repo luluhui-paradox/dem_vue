@@ -11,7 +11,7 @@
           <el-col span="2"></el-col>
           <el-col span="12">
             <p><b>欢迎您：{{username}}</b></p>
-            <p>当前余额：0元   <mt-button type="primary" size="small">点击充值</mt-button></p>
+            <p>当前余额：0元   <mt-button type="primary" @click="()=>{this.$router.push('/pay')}" size="small">点击充值</mt-button></p>
           </el-col>
         </el-row>
       </div>
