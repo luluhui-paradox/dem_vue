@@ -150,7 +150,27 @@ export default new VueRouter({
             path:'/conference/conferenceDetail',
             name:'conferenceDetail',
             component:()=>import('../components/conference/conferenceDetail.vue')
+        },
+        /*****************书籍模块*******************/
+        {
+            //书籍查询
+            path:'/bookManage/bookSearch',
+            name:'bookSearch',
+            component:()=>import('../components/bookManage/bookSearch.vue')
+        },
+        {
+            //添加书籍
+            path:'/bookManage/addNewBook',
+            name:'addNewBook',
+            component:()=>import('../components/bookManage/addNewBook.vue')
+        },
+        {
+            //书籍详情
+            path:'/bookManage/bookDetail',
+            name:'bookDetail',
+            component:()=>import('../components/bookManage/bookDetail.vue')
         }
+
 
     ]
 })

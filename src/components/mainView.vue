@@ -96,7 +96,7 @@
               <mt-cell to="/conference/conferenceSearch" is-link title="组会日程查询"></mt-cell>
             </mt-popup>
             <mt-popup v-model="studentFunctionList.bookStatus">
-              <mt-cell to="" is-link title="书籍查询"></mt-cell>
+              <mt-cell to="/bookManage/bookSearch" is-link title="书籍查询"></mt-cell>
               <mt-cell to="" is-link title="借阅记录"></mt-cell>
             </mt-popup>
             <mt-popup v-model="studentFunctionList.vacationStatus">
@@ -126,10 +126,8 @@
               <mt-cell to="/conference/addNewConference" is-link title="创建新组会"></mt-cell>
             </mt-popup>
             <mt-popup v-model="teacherFunctionList.bookStatus">
-              <mt-cell to="" is-link title="书籍查询"></mt-cell>
-              <mt-cell to="" is-link title="书籍信息修改"></mt-cell>
+              <mt-cell to="/bookManage/bookSearch" is-link title="书籍查询"></mt-cell>
               <mt-cell to="" is-link title="添加新书籍"></mt-cell>
-              <mt-cell to="" is-link title="借阅记录查询"></mt-cell>
             </mt-popup>
             <mt-popup v-model="teacherFunctionList.vacationStatus">
               <mt-cell to="" is-link title="休假信息查询"></mt-cell>
