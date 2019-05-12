@@ -136,12 +136,11 @@
               <mt-cell to="/vacation/searchVacationRecord" is-link title="休假记录处理"></mt-cell>
             </mt-popup>
             <mt-popup v-model="teacherFunctionList.deviceStatus">
-              <mt-cell to="" is-link title="设备查询"></mt-cell>
-              <mt-cell to="" is-link title="添加新设备"></mt-cell>
+              <mt-cell to="/device/deviceSearch" is-link title="设备查询"></mt-cell>
+              <mt-cell to="/device/addNewDevice" is-link title="添加新设备"></mt-cell>
             </mt-popup>
             <mt-popup v-model="teacherFunctionList.userStatus">
               <mt-cell to="" is-link title="添加新用户"></mt-cell>
-              <mt-cell to="" is-link title="用户信息查询"></mt-cell>
             </mt-popup>
           </div>
         </mt-tab-container-item>

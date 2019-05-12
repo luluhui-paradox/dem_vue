@@ -218,6 +218,31 @@ export default new VueRouter({
             path:'/vacation/addVacationRecord',
             name:'addVacationRecord',
             component:()=>import('../components/vacation/addVacationRecord.vue')
+        },
+        /*****************设备管理模块*******************/
+        {
+            //设备查询
+            path:'/device/deviceSearch',
+            name:'deviceSearch',
+            component:()=>import('../components/device/deviceSearch.vue')
+        },
+        {
+            //设备详情
+            path:'/device/deviceDetail',
+            name:'deviceDetail',
+            component:()=>import('../components/device/deviceDetail.vue')
+        },
+        {
+            //设备修改
+            path:'/device/deviceModify',
+            name:'deviceModify',
+            component:()=>import('../components/device/deviceModify.vue')
+        },
+        {
+            //添加设备
+            path:'/device/addNewDevice',
+            name:'addNewDevice',
+            component:()=>import('../components/device/addNewDevice.vue')
         }
 
     ]
