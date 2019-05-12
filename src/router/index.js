@@ -243,6 +243,13 @@ export default new VueRouter({
             path:'/device/addNewDevice',
             name:'addNewDevice',
             component:()=>import('../components/device/addNewDevice.vue')
+        },
+        /*****************添加新用户*******************/
+        {
+            //添加设备
+            path:'/userManage/addNewUser',
+            name:'addNewUser',
+            component:()=>import('../components/userManage/addNewUser.vue')
         }
 
     ]

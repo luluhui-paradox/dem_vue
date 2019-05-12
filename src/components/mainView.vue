@@ -140,7 +140,7 @@
               <mt-cell to="/device/addNewDevice" is-link title="添加新设备"></mt-cell>
             </mt-popup>
             <mt-popup v-model="teacherFunctionList.userStatus">
-              <mt-cell to="" is-link title="添加新用户"></mt-cell>
+              <mt-cell to="/userManage/addNewUser" is-link title="添加新用户"></mt-cell>
             </mt-popup>
           </div>
         </mt-tab-container-item>
