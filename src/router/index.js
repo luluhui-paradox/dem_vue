@@ -181,8 +181,44 @@ export default new VueRouter({
             path:'/bookLend/bookLendDetail',
             name:'bookLendDetail',
             component:()=>import('../components/bookLend/bookLendDetail.vue')
+        },
+        /*****************休假模块*******************/
+        {
+            //休假信息查询
+            path:'/vacation/searchVacationInfo',
+            name:'searchVacationInfo',
+            component:()=>import('../components/vacation/searchVacationInfo.vue')
+        },
+        {
+            //休假信息详情，修改
+            path:'/vacation/vacationInfoDetail',
+            name:'vacationInfoDetail',
+            component:()=>import('../components/vacation/vacationInfoDetail.vue')
+        },
+        {
+            //添加休假信息
+            path:'/vacation/addVacationInfo',
+            name:'addVacationInfo',
+            component:()=>import('../components/vacation/addVacationInfo.vue')
+        },
+        {
+            //休假记录查询
+            path:'/vacation/searchVacationRecord',
+            name:'searchVacationRecord',
+            component:()=>import('../components/vacation/searchVacationRecord.vue')
+        },
+        {
+            //休假记录详情
+            path:'/vacation/vacationRecordDetail',
+            name:'vacationRecordDetail',
+            component:()=>import('../components/vacation/vacationRecordDetail.vue')
+        },
+        {
+            //添加休假记录
+            path:'/vacation/addVacationRecord',
+            name:'addVacationRecord',
+            component:()=>import('../components/vacation/addVacationRecord.vue')
         }
-
 
     ]
 })

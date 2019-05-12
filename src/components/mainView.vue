@@ -100,9 +100,9 @@
               <mt-cell to="/bookLend/bookLendSearch" is-link title="借阅记录"></mt-cell>
             </mt-popup>
             <mt-popup v-model="studentFunctionList.vacationStatus">
-              <mt-cell to="" is-link title="休假信息查询"></mt-cell>
-              <mt-cell to="" is-link title="休假记录查询"></mt-cell>
-              <mt-cell to="" is-link title="申请新休假"></mt-cell>
+              <mt-cell to="/vacation/searchVacationInfo" is-link title="休假信息查询"></mt-cell>
+              <mt-cell to="/vacation/searchVacationRecord" is-link title="休假记录查询"></mt-cell>
+              <mt-cell to="/vacation/addVacationRecord" is-link title="申请新休假"></mt-cell>
             </mt-popup>
           </div>
           <div ref="teacherListView">
@@ -130,10 +130,10 @@
               <mt-cell to="/bookManage/addNewBook" is-link title="添加新书籍"></mt-cell>
             </mt-popup>
             <mt-popup v-model="teacherFunctionList.vacationStatus">
-              <mt-cell to="" is-link title="休假信息查询"></mt-cell>
-              <mt-cell to="" is-link title="休假记录查询"></mt-cell>
-              <mt-cell to="" is-link title="添加休假信息"></mt-cell>
-              <mt-cell to="" is-link title="休假记录处理"></mt-cell>
+              <mt-cell to="/vacation/searchVacationInfo" is-link title="休假信息查询"></mt-cell>
+              <mt-cell to="/vacation/searchVacationRecord" is-link title="休假记录查询"></mt-cell>
+              <mt-cell to="/vacation/addVacationInfo" is-link title="添加休假信息"></mt-cell>
+              <mt-cell to="/vacation/searchVacationRecord" is-link title="休假记录处理"></mt-cell>
             </mt-popup>
             <mt-popup v-model="teacherFunctionList.deviceStatus">
               <mt-cell to="" is-link title="设备查询"></mt-cell>
