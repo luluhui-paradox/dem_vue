@@ -169,6 +169,18 @@ export default new VueRouter({
             path:'/bookManage/bookDetail',
             name:'bookDetail',
             component:()=>import('../components/bookManage/bookDetail.vue')
+        },
+        {
+            //未还书籍查询
+            path:'/bookLend/bookLendSearch',
+            name:'bookLendSearch',
+            component:()=>import('../components/bookLend/bookLendSearch.vue')
+        },
+        {
+            //未还书籍详情
+            path:'/bookLend/bookLendDetail',
+            name:'bookLendDetail',
+            component:()=>import('../components/bookLend/bookLendDetail.vue')
         }
 
 

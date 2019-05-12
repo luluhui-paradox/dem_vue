@@ -49,10 +49,10 @@
                     })
             },
             lendBook(){
-                this.$messagebox.confirm("确定要借阅书籍?").then(this.doLendBook);
+                this.$messagebox.prompt("确定要借阅书籍?","请输入注释").then(({value})=>{this.doLendBook(value)});
             },
-            doLendBook(){
-                this.$http.get("http://dem.luluhui.cf/bookLend/newBookLend?bookId="+this.bookinfo.bookId,{headers:{token: localStorage.getItem("token")}})
+            doLendBook(value){
+                this.$http.get("http://dem.luluhui.cf/bookLend/newBookLend?bookId="+this.bookinfo.bookId+"&comments="+value,{headers:{token: localStorage.getItem("token")}})
                     .then((res)=>{
                         if(res.data==true){
                             let tt=this;
