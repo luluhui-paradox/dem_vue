@@ -1,7 +1,7 @@
 <template>
     <div>
         <mt-header title="药品采购申请">
-            <mt-button slot="left" icon="back" @click="cancle">返回</mt-button>
+            <mt-button slot="left" icon="back" @click="()=>{this.$router.back()}">返回</mt-button>
         </mt-header>
         <div>
             <span @click="drugPopup">
@@ -35,7 +35,6 @@
             }
         },
         methods:{
-            cancle(){this.$router.back()},
             drugPopup(){this.drugPopupValue=true},
             addDrugProcurement(){this.$messagebox.confirm("确认提交?").then(this.doAddDrugProcurement);},
             doAddDrugProcurement(){

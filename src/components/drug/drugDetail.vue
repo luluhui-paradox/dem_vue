@@ -1,7 +1,7 @@
 <template>
     <div>
         <mt-header title="药品详情">
-            <mt-button slot="left" icon="back">返回</mt-button>
+            <mt-button slot="left" icon="back" @click="()=>{this.$router.back()}">返回</mt-button>
         </mt-header>
         <p></p>
         <div>

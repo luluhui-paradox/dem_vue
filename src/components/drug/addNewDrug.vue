@@ -1,7 +1,7 @@
 <template>
     <div>
         <mt-header title="添加药品">
-            <mt-button slot="left" icon="back">返回</mt-button>
+            <mt-button slot="left" icon="back" @click="()=>{this.$router.back()}">返回</mt-button>
         </mt-header>
         <p>
             <mt-field type="text" label="药品名称" placeholder="请输入药品名称" v-model="drugInfo.name"></mt-field>

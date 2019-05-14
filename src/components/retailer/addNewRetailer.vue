@@ -1,7 +1,7 @@
 <template>
     <div>
         <mt-header title="添加生产商">
-            <mt-button slot="left" icon="back">返回</mt-button>
+            <mt-button slot="left" icon="back" @click="()=>{this.$router.back()}">返回</mt-button>
         </mt-header>
         <mt-field v-model="retailerInfo.name" placeholder="请输入名称" label="名称"></mt-field>
         <mt-field v-model="retailerInfo.address" placeholder="请输入地址" label="地址"></mt-field>

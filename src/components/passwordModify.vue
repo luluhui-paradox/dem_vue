@@ -49,7 +49,7 @@
                     this.$messagebox.alert("请检查您的输入","操作失败");
                 }
             },
-            cancle(){this.$router.go(-1);}
+            cancle(){this.$router.back();}
         },
         data(){
             return{

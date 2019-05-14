@@ -1,7 +1,7 @@
 <template>
     <div>
         <mt-header title="药品修改">
-            <mt-button slot="left" icon="back">返回</mt-button>
+            <mt-button slot="left" icon="back" @click="()=>{this.$router.back()}">返回</mt-button>
         </mt-header>
         <mt-cell title="药品编号">{{this.$route.params.drugId}}</mt-cell>
         <mt-cell title="药品名称">{{this.$route.params.name}}</mt-cell>
