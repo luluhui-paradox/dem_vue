@@ -1,19 +1,23 @@
 <template>
   <div id="mainView">
-    <mt-header title="主页"></mt-header>
     <div>
-      <div ref="qiezi">
+      <div ref="qiezi" >
         <!--主页面-->
-        <el-row style="background-image: url('../assets/background/bg_longStrip.jpg')" type="flex" justify="center" >
-          <el-col span="4">
-            <p><img src="../assets/headshot/qz.jpg" class="round_icon" alt="quit"></p>
-          </el-col>
-          <el-col span="2"></el-col>
-          <el-col span="12">
-            <p><b>欢迎您：{{username}}</b></p>
-            <p>当前余额：0元  <mt-button type="primary" @click="()=>{this.$router.push('/pay')}" size="small">点击充值</mt-button></p>
-          </el-col>
-        </el-row>
+        <div :style="qieziStyle">
+          <div>
+            <div>
+              <div class="title-left">
+                <img src="../assets/headshot/animi.png" class="round_icon" alt="">
+              </div>
+              <div class="title-right">
+                <h2>{{username}} </h2>
+                <p>余额:0元<mt-button type="primary" size="small" @click="()=>{this.$router.push('/pay');}">充值</mt-button></p>
+              </div>
+            </div>
+            <div class="clear"> </div>
+          </div>
+        </div>
+        <div class="clear"> </div>
       </div>
       <div style="width: 95%;margin-left: 2.5%;">
         <mt-tab-container v-model="selectItem">
@@ -209,6 +213,11 @@ export default {
   },
   data(){
     return{
+      qieziStyle:{
+        backgroundImage: "url(" + require("../assets/background/bg_longStrip.jpg") + ")",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "100% 100%",
+      },
       username:localStorage.getItem('name'),
       status:localStorage.getItem('status'),
       selectItem:'mainWebView',
@@ -308,10 +317,45 @@ export default {
   .round_icon{
     width: 80px;
     height: 80px;
-    display: flex;
+    /*display: flex;*/
     border-radius: 50%;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+    /*align-items: center;*/
+    /*justify-content: center;*/
+    /*overflow: hidden;*/
+  }
+  .banner-text {
+    padding: 2em 1em 2em 2em;
+  }
+  .title {
+    margin: 1.5em 1em 1em 1em;
+  }
+  .title-left {
+    float: left;
+    width: 30%;
+    margin-top: 2rem;
+    margin-left: 3rem;
+  }
+  .title-left  img {
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+  }
+  .title-right {
+    float: left;
+    width: 50%;
+    margin-left: 0.5rem;
+  }
+  .title-right h2 {
+    font-size: 1.6em;
+    color: #000000;
+    margin-top: 0.6em;
+  }
+  .title-right h6 {
+    font-size: 1em;
+    color: #68d3ff;
+    margin-top: 0.5em;
+  }
+  .clear{
+    clear: both;
   }
 </style>
