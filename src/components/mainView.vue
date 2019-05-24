@@ -1,6 +1,6 @@
 <template>
   <div id="mainView">
-    <mt-header title="主页" style="background-color:#eaeaea;color: #222222"></mt-header>
+    <mt-header title="主页"></mt-header>
     <div>
       <div ref="qiezi">
         <!--主页面-->
