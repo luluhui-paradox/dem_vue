@@ -11,157 +11,168 @@
           <el-col span="2"></el-col>
           <el-col span="12">
             <p><b>欢迎您：{{username}}</b></p>
-            <p>当前余额：0元   <mt-button type="primary" @click="()=>{this.$router.push('/pay')}" size="small">点击充值</mt-button></p>
+            <p>当前余额：0元  <mt-button type="primary" @click="()=>{this.$router.push('/pay')}" size="small">点击充值</mt-button></p>
           </el-col>
         </el-row>
       </div>
-      <mt-tab-container v-model="selectItem">
-        <mt-tab-container-item id="mainWebView">
-          <mt-cell title="当前药品申请单" to="/drugRequest/drugRequestSearch" is-link>{{listNumber.drugRequestNumber}}份</mt-cell>
-          <mt-cell title="当前引物申请" to="/primer/primerSearch" is-link>{{listNumber.primerNumber}}份</mt-cell>
-          <mt-cell title="当前测序申请" to="/sequence/sequenceSearch" is-link>{{listNumber.sequenceNumber}}份</mt-cell>
-          <mt-cell title="组会日程" to="/conference/conferenceSearch" is-link value="更多"></mt-cell>
-          <el-table :data="listNumber.conferenceList">
-            <el-table-column prop="subject" label="项目名称"></el-table-column>
-            <el-table-column prop="recordPeople" label="报告人"></el-table-column>
-            <el-table-column prop="conferenceDate" label="日期"></el-table-column>
-          </el-table>
-          <mt-cell title="未还书籍" to="/bookLend/bookLendSearch" is-link>{{listNumber.bookNumber}}本</mt-cell>
-        </mt-tab-container-item>
-        <mt-tab-container-item id="functionView">
-          <!-- 功能模块 学生端-->
-          <div ref="studentFunction" style="text-align: center" v-if="this.status==0">
-            <mt-cell title="药品模块">
-              <mt-button icon="more" @click="openDrug" ></mt-button>
-            </mt-cell>
-            <mt-cell title="引物模块">
-              <mt-button icon="more" @click="openPrimer" ></mt-button>
-            </mt-cell>
-            <mt-cell title="测序模块">
-              <mt-button icon="more" @click="openSequence" ></mt-button>
-            </mt-cell>
-            <mt-cell title="组会日程">
-              <mt-button icon="more" @click="openConference" ></mt-button>
-            </mt-cell>
-            <mt-cell title="书籍借阅">
-              <mt-button icon="more" @click="openBook"></mt-button>
-            </mt-cell>
-            <mt-cell title="休假管理">
-              <mt-button icon="more" @click="openVacation" ></mt-button>
-            </mt-cell>
-          </div>
-          <!--功能模块，教师端-->
-          <div ref="teacherFunction" style="text-align: center" v-if="this.status==1">
-            <mt-cell title="药品模块">
-              <mt-button icon="more" @click="openDrugTeacher" ></mt-button>
-            </mt-cell>
-            <mt-cell title="引物模块">
-              <mt-button icon="more" @click="openPrimerTeacher" ></mt-button>
-            </mt-cell>
-            <mt-cell title="测序模块">
-              <mt-button icon="more" @click="openSequenceTeacher" ></mt-button>
-            </mt-cell>
-            <mt-cell title="组会日程">
-              <mt-button icon="more" @click="openConferenceTeacher" ></mt-button>
-            </mt-cell>
-            <mt-cell title="书籍管理">
-              <mt-button icon="more" @click="openBookTeacher"></mt-button>
-            </mt-cell>
-            <mt-cell title="休假管理">
-              <mt-button icon="more" @click="openVacationTeacher" ></mt-button>
-            </mt-cell>
-            <mt-cell title="设备管理">
-              <mt-button icon="more" @click="openDeviceTeacher" ></mt-button>
-            </mt-cell>
-            <mt-cell title="用户管理">
-              <mt-button icon="more" @click="openUserTeacher" ></mt-button>
-            </mt-cell>
-          </div>
-          <div ref="studentListView">
-            <mt-popup v-model="studentFunctionList.drugStatus">
-              <mt-cell to="/drug/queryDrug" is-link title="药品查询"></mt-cell>
-              <mt-cell to="/drug/addNewDrug" is-link title="添加药品"></mt-cell>
-              <mt-cell to="/drugRequest/drugRequestSearch" is-link title="药品领用"></mt-cell>
-              <mt-cell to="/drugProcurement/drugProcurementSearch" is-link title="药品采购"></mt-cell>
-            </mt-popup>
-            <mt-popup v-model="studentFunctionList.primerStatus">
-              <mt-cell to="/primer/primerSearch" is-link title="引物申请查询"></mt-cell>
-              <mt-cell to="/primer/addNewPrimer" is-link title="添加引物申请"></mt-cell>
-            </mt-popup>
-            <mt-popup v-model="studentFunctionList.sequenceStatus">
-              <mt-cell to="/sequence/sequenceSearch" is-link title="测序申请查询"></mt-cell>
-              <mt-cell to="/sequence/addNewSequence" is-link title="添加测序申请"></mt-cell>
-            </mt-popup>
-            <mt-popup v-model="studentFunctionList.conferenceStatus">
-              <mt-cell to="/conference/conferenceSearch" is-link title="组会日程查询"></mt-cell>
-            </mt-popup>
-            <mt-popup v-model="studentFunctionList.bookStatus">
-              <mt-cell to="/bookManage/bookSearch" is-link title="书籍查询"></mt-cell>
-              <mt-cell to="/bookLend/bookLendSearch" is-link title="借阅记录"></mt-cell>
-            </mt-popup>
-            <mt-popup v-model="studentFunctionList.vacationStatus">
-              <mt-cell to="/vacation/searchVacationInfo" is-link title="休假信息查询"></mt-cell>
-              <mt-cell to="/vacation/searchVacationRecord" is-link title="休假记录查询"></mt-cell>
-              <mt-cell to="/vacation/addVacationRecord" is-link title="申请新休假"></mt-cell>
-            </mt-popup>
-          </div>
-          <div ref="teacherListView">
-            <mt-popup v-model="teacherFunctionList.drugStatus">
-              <mt-cell to="/drug/queryDrug" is-link title="药品查询"></mt-cell>
-              <mt-cell to="/drug/addNewDrug" is-link title="添加药品"></mt-cell>
-              <mt-cell to="/drugRequest/drugRequestSearch" is-link title="药品领用处理"></mt-cell>
-              <mt-cell to="/drugProcurement/drugProcurementSearch" is-link title="药品采购处理"></mt-cell>
-            </mt-popup>
-            <mt-popup v-model="teacherFunctionList.primerStatus">
-              <mt-cell to="/primer/primerSearch" is-link title="引物申请处理"></mt-cell>
-              <mt-cell to="/primer/primerSearch" is-link title="引物申请查询"></mt-cell>
-            </mt-popup>
-            <mt-popup v-model="teacherFunctionList.sequenceStatus">
-              <mt-cell to="/sequence/sequenceSearch" is-link title="测序申请处理"></mt-cell>
-              <mt-cell to="/sequence/sequenceSearch" is-link title="测序申请查询"></mt-cell>
-            </mt-popup>
-            <mt-popup v-model="teacherFunctionList.conferenceStatus">
-              <mt-cell to="/conference/conferenceSearch" is-link title="组会日程查询"></mt-cell>
-              <mt-cell to="/conference/conferenceSearch" is-link title="组会日程处理"></mt-cell>
-              <mt-cell to="/conference/addNewConference" is-link title="创建新组会"></mt-cell>
-            </mt-popup>
-            <mt-popup v-model="teacherFunctionList.bookStatus">
-              <mt-cell to="/bookManage/bookSearch" is-link title="书籍查询"></mt-cell>
-              <mt-cell to="/bookManage/addNewBook" is-link title="添加新书籍"></mt-cell>
-            </mt-popup>
-            <mt-popup v-model="teacherFunctionList.vacationStatus">
-              <mt-cell to="/vacation/searchVacationInfo" is-link title="休假信息查询"></mt-cell>
-              <mt-cell to="/vacation/searchVacationRecord" is-link title="休假记录查询"></mt-cell>
-              <mt-cell to="/vacation/addVacationInfo" is-link title="添加休假信息"></mt-cell>
-              <mt-cell to="/vacation/searchVacationRecord" is-link title="休假记录处理"></mt-cell>
-            </mt-popup>
-            <mt-popup v-model="teacherFunctionList.deviceStatus">
-              <mt-cell to="/device/deviceSearch" is-link title="设备查询"></mt-cell>
-              <mt-cell to="/device/addNewDevice" is-link title="添加新设备"></mt-cell>
-            </mt-popup>
-            <mt-popup v-model="teacherFunctionList.userStatus">
-              <mt-cell to="/userManage/addNewUser" is-link title="添加新用户"></mt-cell>
-            </mt-popup>
-          </div>
-        </mt-tab-container-item>
-        <mt-tab-container-item id="myInfoView">
-          <!-- ‘我的‘界面-->
-          <mt-cell title="账户:">{{UserInfo.userAccount}}</mt-cell>
-          <mt-cell title="用户名:">{{UserInfo.userName}}</mt-cell>
-          <mt-cell title="邮箱:">{{UserInfo.email}}</mt-cell>
-          <mt-cell title="手机号:">{{UserInfo.phoneNumber}}</mt-cell>
-          <mt-cell title="身份:">{{UserInfo.status}}</mt-cell>
-          <mt-cell title="性别:">{{UserInfo.sex}}</mt-cell>
-          <p><mt-button size="large" type="primary" @click="passwordModify">修改密码</mt-button></p>
-          <p><mt-button size="large" type="danger" @click="wdnmdQuit">退出登录</mt-button></p>
-        </mt-tab-container-item>
-      </mt-tab-container>
+      <div style="width: 95%;margin-left: 2.5%;">
+        <mt-tab-container v-model="selectItem">
+          <mt-tab-container-item id="mainWebView">
+            <mt-cell title="当前药品申请单" to="/drugRequest/drugRequestSearch" is-link>{{listNumber.drugRequestNumber}}份</mt-cell>
+            <mt-cell title="当前引物申请" to="/primer/primerSearch" is-link>{{listNumber.primerNumber}}份</mt-cell>
+            <mt-cell title="当前测序申请" to="/sequence/sequenceSearch" is-link>{{listNumber.sequenceNumber}}份</mt-cell>
+            <mt-cell title="组会日程" to="/conference/conferenceSearch" is-link value="更多"></mt-cell>
+            <el-table :data="listNumber.conferenceList">
+              <el-table-column prop="subject" label="项目名称"></el-table-column>
+              <el-table-column prop="recordPeople" label="报告人"></el-table-column>
+              <el-table-column prop="conferenceDate" label="日期"></el-table-column>
+            </el-table>
+            <mt-cell title="未还书籍" to="/bookLend/bookLendSearch" is-link>{{listNumber.bookNumber}}本</mt-cell>
+          </mt-tab-container-item>
+          <mt-tab-container-item id="functionView">
+            <!-- 功能模块 学生端-->
+            <div ref="studentFunction" style="text-align: center" v-if="this.status==0">
+              <mt-cell title="药品模块">
+                <mt-button icon="more" @click="openDrug" ></mt-button>
+              </mt-cell>
+              <mt-cell title="引物模块">
+                <mt-button icon="more" @click="openPrimer" ></mt-button>
+              </mt-cell>
+              <mt-cell title="测序模块">
+                <mt-button icon="more" @click="openSequence" ></mt-button>
+              </mt-cell>
+              <mt-cell title="组会日程">
+                <mt-button icon="more" @click="openConference" ></mt-button>
+              </mt-cell>
+              <mt-cell title="书籍借阅">
+                <mt-button icon="more" @click="openBook"></mt-button>
+              </mt-cell>
+              <mt-cell title="休假管理">
+                <mt-button icon="more" @click="openVacation" ></mt-button>
+              </mt-cell>
+            </div>
+            <!--功能模块，教师端-->
+            <div ref="teacherFunction" style="text-align: center" v-if="this.status==1">
+              <mt-cell title="药品模块">
+                <mt-button icon="more" @click="openDrugTeacher" ></mt-button>
+              </mt-cell>
+              <mt-cell title="引物模块">
+                <mt-button icon="more" @click="openPrimerTeacher" ></mt-button>
+              </mt-cell>
+              <mt-cell title="测序模块">
+                <mt-button icon="more" @click="openSequenceTeacher" ></mt-button>
+              </mt-cell>
+              <mt-cell title="组会日程">
+                <mt-button icon="more" @click="openConferenceTeacher" ></mt-button>
+              </mt-cell>
+              <mt-cell title="书籍管理">
+                <mt-button icon="more" @click="openBookTeacher"></mt-button>
+              </mt-cell>
+              <mt-cell title="休假管理">
+                <mt-button icon="more" @click="openVacationTeacher" ></mt-button>
+              </mt-cell>
+              <mt-cell title="设备管理">
+                <mt-button icon="more" @click="openDeviceTeacher" ></mt-button>
+              </mt-cell>
+              <mt-cell title="用户管理">
+                <mt-button icon="more" @click="openUserTeacher" ></mt-button>
+              </mt-cell>
+            </div>
+            <div ref="studentListView">
+              <mt-popup v-model="studentFunctionList.drugStatus">
+                <mt-cell to="/drug/queryDrug" is-link title="药品查询"></mt-cell>
+                <mt-cell to="/drug/addNewDrug" is-link title="添加药品"></mt-cell>
+                <mt-cell to="/drugRequest/drugRequestSearch" is-link title="药品领用"></mt-cell>
+                <mt-cell to="/drugProcurement/drugProcurementSearch" is-link title="药品采购"></mt-cell>
+              </mt-popup>
+              <mt-popup v-model="studentFunctionList.primerStatus">
+                <mt-cell to="/primer/primerSearch" is-link title="引物申请查询"></mt-cell>
+                <mt-cell to="/primer/addNewPrimer" is-link title="添加引物申请"></mt-cell>
+              </mt-popup>
+              <mt-popup v-model="studentFunctionList.sequenceStatus">
+                <mt-cell to="/sequence/sequenceSearch" is-link title="测序申请查询"></mt-cell>
+                <mt-cell to="/sequence/addNewSequence" is-link title="添加测序申请"></mt-cell>
+              </mt-popup>
+              <mt-popup v-model="studentFunctionList.conferenceStatus">
+                <mt-cell to="/conference/conferenceSearch" is-link title="组会日程查询"></mt-cell>
+              </mt-popup>
+              <mt-popup v-model="studentFunctionList.bookStatus">
+                <mt-cell to="/bookManage/bookSearch" is-link title="书籍查询"></mt-cell>
+                <mt-cell to="/bookLend/bookLendSearch" is-link title="借阅记录"></mt-cell>
+              </mt-popup>
+              <mt-popup v-model="studentFunctionList.vacationStatus">
+                <mt-cell to="/vacation/searchVacationInfo" is-link title="休假信息查询"></mt-cell>
+                <mt-cell to="/vacation/searchVacationRecord" is-link title="休假记录查询"></mt-cell>
+                <mt-cell to="/vacation/addVacationRecord" is-link title="申请新休假"></mt-cell>
+              </mt-popup>
+            </div>
+            <div ref="teacherListView">
+              <mt-popup v-model="teacherFunctionList.drugStatus">
+                <mt-cell to="/drug/queryDrug" is-link title="药品查询"></mt-cell>
+                <mt-cell to="/drug/addNewDrug" is-link title="添加药品"></mt-cell>
+                <mt-cell to="/drugRequest/drugRequestSearch" is-link title="药品领用处理"></mt-cell>
+                <mt-cell to="/drugProcurement/drugProcurementSearch" is-link title="药品采购处理"></mt-cell>
+              </mt-popup>
+              <mt-popup v-model="teacherFunctionList.primerStatus">
+                <mt-cell to="/primer/primerSearch" is-link title="引物申请处理"></mt-cell>
+                <mt-cell to="/primer/primerSearch" is-link title="引物申请查询"></mt-cell>
+              </mt-popup>
+              <mt-popup v-model="teacherFunctionList.sequenceStatus">
+                <mt-cell to="/sequence/sequenceSearch" is-link title="测序申请处理"></mt-cell>
+                <mt-cell to="/sequence/sequenceSearch" is-link title="测序申请查询"></mt-cell>
+              </mt-popup>
+              <mt-popup v-model="teacherFunctionList.conferenceStatus">
+                <mt-cell to="/conference/conferenceSearch" is-link title="组会日程查询"></mt-cell>
+                <mt-cell to="/conference/conferenceSearch" is-link title="组会日程处理"></mt-cell>
+                <mt-cell to="/conference/addNewConference" is-link title="创建新组会"></mt-cell>
+              </mt-popup>
+              <mt-popup v-model="teacherFunctionList.bookStatus">
+                <mt-cell to="/bookManage/bookSearch" is-link title="书籍查询"></mt-cell>
+                <mt-cell to="/bookManage/addNewBook" is-link title="添加新书籍"></mt-cell>
+              </mt-popup>
+              <mt-popup v-model="teacherFunctionList.vacationStatus">
+                <mt-cell to="/vacation/searchVacationInfo" is-link title="休假信息查询"></mt-cell>
+                <mt-cell to="/vacation/searchVacationRecord" is-link title="休假记录查询"></mt-cell>
+                <mt-cell to="/vacation/addVacationInfo" is-link title="添加休假信息"></mt-cell>
+                <mt-cell to="/vacation/searchVacationRecord" is-link title="休假记录处理"></mt-cell>
+              </mt-popup>
+              <mt-popup v-model="teacherFunctionList.deviceStatus">
+                <mt-cell to="/device/deviceSearch" is-link title="设备查询"></mt-cell>
+                <mt-cell to="/device/addNewDevice" is-link title="添加新设备"></mt-cell>
+              </mt-popup>
+              <mt-popup v-model="teacherFunctionList.userStatus">
+                <mt-cell to="/userManage/addNewUser" is-link title="添加新用户"></mt-cell>
+              </mt-popup>
+            </div>
+          </mt-tab-container-item>
+          <mt-tab-container-item id="myInfoView">
+            <!-- ‘我的‘界面-->
+            <mt-cell title="账户:">{{UserInfo.userAccount}}</mt-cell>
+            <mt-cell title="用户名:">{{UserInfo.userName}}</mt-cell>
+            <mt-cell title="邮箱:">{{UserInfo.email}}</mt-cell>
+            <mt-cell title="手机号:">{{UserInfo.phoneNumber}}</mt-cell>
+            <mt-cell title="身份:">{{UserInfo.status}}</mt-cell>
+            <mt-cell title="性别:">{{UserInfo.sex}}</mt-cell>
+            <p><mt-button size="large" type="primary" @click="passwordModify">修改密码</mt-button></p>
+            <p><mt-button size="large" type="danger" @click="wdnmdQuit">退出登录</mt-button></p>
+          </mt-tab-container-item>
+        </mt-tab-container>
+      </div>
     </div>
     <div>
       <mt-tabbar fixed="true" v-model="selectItem">
-        <mt-tab-item id="mainWebView" style="height: 30px">首页</mt-tab-item>
-        <mt-tab-item id="functionView" style="height: 30px" >功能</mt-tab-item>
-        <mt-tab-item id="myInfoView" style="height: 30px;text-align: center">我的</mt-tab-item>
+        <mt-tab-item id="mainWebView">
+          <i slot="icon" class="el-icon-menu"></i>
+          首页
+        </mt-tab-item>
+        <mt-tab-item id="functionView">
+          <i slot="icon" class="el-icon-s-tools"></i>
+          功能
+        </mt-tab-item>
+        <mt-tab-item id="myInfoView">
+          <i slot="icon" class="el-icon-s-promotion"></i>
+          我的
+        </mt-tab-item>
       </mt-tabbar>
     </div>
   </div>

@@ -16,7 +16,7 @@
             <mt-field label="密码" placeholder="请输入密码" type="password" v-model="password"></mt-field>
         </div>
         <div style="justify-content: center;align-items: center;align-content: center;">
-            <center style="margin-top: 8%"><mt-button type="primary" @click="login" size="large" style="width: 80%;text-align: center;!important" >登录</mt-button></center>
+            <center style="margin-top: 12%"><mt-button type="primary" @click="login" size="large" style="width: 80%;text-align: center;!important" >登录</mt-button></center>
         </div>
         <div class="share">
             <div class="left"></div>
@@ -101,6 +101,9 @@
     }
     .loginDiv{
         margin-top: 25%;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
     }
     .share {
         margin-top: 2rem;
