@@ -1,5 +1,5 @@
 <template>
-  <div id="mainView">
+  <div id="mainView" :style="mainDivStyle">
     <div>
       <div ref="qiezi" >
         <!--主页面-->
@@ -19,23 +19,25 @@
         </div>
         <div class="clear"> </div>
       </div>
-      <div style="width: 95%;margin-left: 2.5%;">
+      <div style="width: 80%;margin-left:auto;margin-right: auto;margin-top: 2rem">
         <mt-tab-container v-model="selectItem">
           <mt-tab-container-item id="mainWebView">
-            <mt-cell title="当前药品申请单" to="/drugRequest/drugRequestSearch" is-link>{{listNumber.drugRequestNumber}}份</mt-cell>
-            <mt-cell title="当前引物申请" to="/primer/primerSearch" is-link>{{listNumber.primerNumber}}份</mt-cell>
-            <mt-cell title="当前测序申请" to="/sequence/sequenceSearch" is-link>{{listNumber.sequenceNumber}}份</mt-cell>
-            <mt-cell title="组会日程" to="/conference/conferenceSearch" is-link value="更多"></mt-cell>
-            <el-table :data="listNumber.conferenceList">
-              <el-table-column prop="subject" label="项目名称"></el-table-column>
-              <el-table-column prop="recordPeople" label="报告人"></el-table-column>
-              <el-table-column prop="conferenceDate" label="日期"></el-table-column>
-            </el-table>
-            <mt-cell title="未还书籍" to="/bookLend/bookLendSearch" is-link>{{listNumber.bookNumber}}本</mt-cell>
+            <div>
+              <mt-cell title="当前药品申请单" to="/drugRequest/drugRequestSearch" is-link>{{listNumber.drugRequestNumber}}份</mt-cell>
+              <mt-cell title="当前引物申请" to="/primer/primerSearch" is-link>{{listNumber.primerNumber}}份</mt-cell>
+              <mt-cell title="当前测序申请" to="/sequence/sequenceSearch" is-link>{{listNumber.sequenceNumber}}份</mt-cell>
+              <mt-cell title="组会日程" to="/conference/conferenceSearch" is-link value="更多"></mt-cell>
+              <el-table :data="listNumber.conferenceList">
+                <el-table-column prop="subject" label="项目名称"></el-table-column>
+                <el-table-column prop="recordPeople" label="报告人"></el-table-column>
+                <el-table-column prop="conferenceDate" label="日期"></el-table-column>
+              </el-table>
+              <mt-cell v-if="status==0" title="未还书籍" to="/bookLend/bookLendSearch" is-link>{{listNumber.bookNumber}}本</mt-cell>
+            </div>
           </mt-tab-container-item>
           <mt-tab-container-item id="functionView">
             <!-- 功能模块 学生端-->
-            <div ref="studentFunction" style="text-align: center" v-if="this.status==0">
+            <div ref="studentFunction"  style="text-align: center" v-if="this.status==0">
               <mt-cell title="药品模块">
                 <mt-button icon="more" @click="openDrug" ></mt-button>
               </mt-cell>
@@ -213,10 +215,18 @@ export default {
   },
   data(){
     return{
+      mainDivStyle:{
+        height:'98%',
+        width:'97.5%',
+        backgroundImage: "url(" + require("../assets/background/bg-body.png") + ")",
+        backgroundSize:"98% 98%",
+        backgroundRepeat:'no-repeat',
+        position:'absolute',
+      },
       qieziStyle:{
         backgroundImage: "url(" + require("../assets/background/bg_longStrip.jpg") + ")",
         backgroundRepeat: "no-repeat",
-        backgroundSize: "100% 100%",
+        backgroundSize: "98% 98%",
       },
       username:localStorage.getItem('name'),
       status:localStorage.getItem('status'),
@@ -314,6 +324,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
   .round_icon{
     width: 80px;
     height: 80px;
@@ -357,5 +368,11 @@ export default {
   }
   .clear{
     clear: both;
+  }
+  .mint-cell{
+    opacity: 0.85;
+  }
+  .el-table{
+    opacity: 0.85;
   }
 </style>

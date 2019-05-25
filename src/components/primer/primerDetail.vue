@@ -14,9 +14,9 @@
         <mt-cell title="OD值" v-model="primerInfo.odValue"></mt-cell>
         <mt-cell title="申请日期" v-model="primerInfo.requestDate"></mt-cell>
         <mt-cell title="批准日期" v-model="primerInfo.approvalDate"></mt-cell>
-        <mt-cell title="购买日期" v-model="primerInfo.procurementDate"></mt-cell>
-        <mt-cell title="收货日期" v-model="primerInfo.recieveDate"></mt-cell>
-        <mt-cell title="使用日期" v-model="primerInfo.useDate"></mt-cell>
+        <mt-cell title="购买日期" v-if="!teacherModifing" v-model="primerInfo.procurementDate"></mt-cell>
+        <mt-cell title="收货日期" v-if="!teacherModifing" v-model="primerInfo.recieveDate"></mt-cell>
+        <mt-cell title="使用日期" v-if="!teacherModifing" v-model="primerInfo.useDate"></mt-cell>
         <div v-show="teacherModifing">
             <mt-radio
                     v-show="teacherModifing"

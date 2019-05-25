@@ -26,12 +26,10 @@
         </div>
         <div>
             <el-table :data="requestList" @row-click="rowClick" style="width: 100%">
-                <el-table-column prop="drugRequestFormId" label="编号" width="50px" ></el-table-column>
-                <el-table-column prop="drugId" label="药品编号" width="70px" ></el-table-column>
+                <el-table-column prop="drugId" label="药品编号"></el-table-column>
                 <el-table-column prop="requestPeopleName" label="申请人" ></el-table-column>
                 <el-table-column prop="scrutinyName" label="审查人"></el-table-column>
                 <el-table-column prop="number" label="数量" ></el-table-column>
-                <el-table-column prop="requestDate" label="申请日期"></el-table-column>
             </el-table>
             <p>
                 <mt-button size="large" type="primary" v-if="teacherStatus==0" @click="newRequest">添加药品领用单</mt-button>

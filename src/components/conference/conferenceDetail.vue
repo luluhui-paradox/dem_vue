@@ -4,20 +4,22 @@
             <mt-button slot="left" icon="back" @click="()=>{this.$router.back()}">返回</mt-button>
         </mt-header>
         <mt-cell title="编号" v-model="conferenceInfo.conferenceId"></mt-cell>
-        <mt-cell title="主题" v-model="conferenceInfo.subject"></mt-cell>
         <mt-cell title="报告人" v-model="conferenceInfo.recordPeople"></mt-cell>
-        <mt-cell title="组会日期" v-model="conferenceInfo.conferenceDate"></mt-cell>
         <mt-cell title="审查人" v-model="this.performPeopleName" ></mt-cell>
-        <mt-cell title="评论" v-model="conferenceInfo.remark"></mt-cell>
-        <mt-cell title="注释" v-model="conferenceInfo.comment"></mt-cell>
+        <div v-show="!teacherModifing">
+            <mt-cell title="主题" v-model="conferenceInfo.subject"></mt-cell>
+            <mt-cell title="组会日期" v-model="conferenceInfo.conferenceDate"></mt-cell>
+            <mt-cell title="评论" v-model="conferenceInfo.remark"></mt-cell>
+            <mt-cell title="注释" v-model="conferenceInfo.comment"></mt-cell>
+        </div>
         <div v-show="teacherModifing">
             <mt-field label="组会日期" type="date" v-model="conferenceInfo.conferenceDate" placeholder="请输入组会日期"></mt-field>
             <mt-field label="主题" v-model="conferenceInfo.subject" placeholder="请输入主题"></mt-field>
             <mt-field label="评论" type="textarea" v-model="conferenceInfo.remark" placeholder="请输入评论"></mt-field>
             <mt-field label="注释" type="area" v-model="conferenceInfo.comment" placeholder="请输入注释"></mt-field>
         </div>
-        <p> <mt-button size="large" type="primary" v-if="teacherStatus" @click="updateConference">修改引物单</mt-button> </p>
-        <p> <mt-button size="large" v-if="teacherStatus" type="danger" @click="deleteConference">删除引物单</mt-button> </p>
+        <p> <mt-button size="large" type="primary" v-if="teacherStatus" @click="updateConference">修改组会信息</mt-button> </p>
+        <p> <mt-button size="large" v-if="teacherStatus" type="danger" @click="deleteConference">删除组会日程</mt-button> </p>
 
 
     </div>

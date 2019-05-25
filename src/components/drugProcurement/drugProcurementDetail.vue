@@ -10,8 +10,11 @@
             <mt-cell title="申请数量">{{drugProcurementInfo.number}}</mt-cell>
             <mt-cell title="申请人">{{drugProcurementInfo.requestPeopleName}}</mt-cell>
             <mt-cell title="审查人">{{drugProcurementInfo.scrutinyName}}</mt-cell>
-            <mt-cell title="申请日期">{{drugProcurementInfo.requestDate}}</mt-cell>
-            <mt-cell title="收货日期"  v-model="drugProcurementInfo.receiveDate"></mt-cell>
+            <mt-cell title="申请日期">{{drugProcurementInfo.requestDate.slice(0,10)}}</mt-cell>
+            <mt-cell title="采购人" v-if="!teacherModifing" v-model="drugProcurementInfo.procurementPeople"></mt-cell>
+            <mt-cell title="采购日期" v-if="!teacherModifing">{{drugProcurementInfo.procurementDate.slice(0,10)}}</mt-cell>
+            <mt-cell title="收货人" v-if="!teacherModifing" v-model="drugProcurementInfo.recievePeople"></mt-cell>
+            <mt-cell title="收货日期" v-if="!teacherModifing">{{drugProcurementInfo.receiveDate.slice(0,10)}}</mt-cell>
             <mt-cell title="注释" rows="3" v-model="drugProcurementInfo.comments"></mt-cell>
             <div v-show="teacherModifing">
                 <mt-radio
@@ -27,8 +30,8 @@
             </div>
 
         </div>
-        <mt-button size="large" type="danger" v-if="studentCanDelete" @click="studentDelete">删除领用单</mt-button>
-        <mt-button size="large" type="danger" v-if="teacherCanModify" @click="changeTeacherModify">修改领用单</mt-button>
+        <mt-button size="large" type="danger" v-if="studentCanDelete" @click="studentDelete">删除采购单</mt-button>
+        <mt-button size="large" type="danger" v-if="teacherCanModify" @click="changeTeacherModify">修改采购单</mt-button>
     </div>
 </template>
 

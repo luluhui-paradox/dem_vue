@@ -23,7 +23,6 @@
                 <el-table-column prop="price" label="价格" width="70px" ></el-table-column>
                 <el-table-column prop="requestPeopleName" label="申请人" ></el-table-column>
                 <el-table-column prop="approvalPeopleName" label="审查人"></el-table-column>
-                <el-table-column prop="requestDate" label="申请日期"></el-table-column>
             </el-table>
             <p>
                 <mt-button size="large" type="primary" v-if="teacherStatus==0" @click="newPrimer">添加引物单</mt-button>

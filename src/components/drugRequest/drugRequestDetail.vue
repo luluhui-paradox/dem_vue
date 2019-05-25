@@ -10,10 +10,13 @@
             <mt-cell title="申请数量">{{drugRequestInfo.number}}</mt-cell>
             <mt-cell title="申请人">{{drugRequestInfo.requestPeopleName}}</mt-cell>
             <mt-cell title="审查人">{{drugRequestInfo.scrutinyName}}</mt-cell>
-            <mt-cell title="申请日期">{{drugRequestInfo.requestDate}}</mt-cell>
-            <mt-field label="收货日期" type="date" v-model="drugRequestInfo.receiveDate"></mt-field>
-            <mt-field label="出库人" v-if="teacherModifing" v-model="drugRequestInfo.outInventoryPeople"></mt-field>
-            <mt-field label="注释" type="textarea" rows="3" v-model="drugRequestInfo.comments"></mt-field>
+            <mt-cell title="申请日期">{{drugRequestInfo.requestDate.slice(0,10)}}</mt-cell>
+            <mt-cell title="收货日期" v-show="!teacherModifing">{{drugRequestInfo.receiveDate.slice(0,10)}}</mt-cell>
+            <mt-cell title="出库人" v-show="!teacherModifing" v-model="drugRequestInfo.outInventoryPeople"></mt-cell>
+            <mt-cell title="注释" type="textarea" rows="3" v-show="!teacherModifing" v-model="drugRequestInfo.comments"></mt-cell>
+            <mt-field label="收货日期" v-show="teacherModifing" type="date" v-model="drugRequestInfo.receiveDate"></mt-field>
+            <mt-field label="出库人" v-show="teacherModifing" v-model="drugRequestInfo.outInventoryPeople"></mt-field>
+            <mt-field label="注释" v-show="teacherModifing" type="textarea" rows="3" v-model="drugRequestInfo.comments"></mt-field>
             <mt-radio
                     v-show="teacherModifing"
                     title="领用单状态"

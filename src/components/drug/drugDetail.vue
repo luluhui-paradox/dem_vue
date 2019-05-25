@@ -15,7 +15,7 @@
                 <mt-cell title="经销商">{{this.manufactorDetail.name}}</mt-cell>
             </span>
             <mt-cell title="种类">{{this.$route.params.specifications}}</mt-cell>
-            <mt-cell title="生产日期">{{this.$route.params.producedTime}}</mt-cell>
+            <mt-cell title="生产日期">{{this.$route.params.producedTime.slice(0,10)}}</mt-cell>
             <mt-cell title="保质期">{{this.$route.params.duration}}天</mt-cell>
             <mt-cell title="使用条件">{{this.$route.params.useStatement}}</mt-cell>
             <mt-cell title="计量单位">{{this.$route.params.unit}}</mt-cell>

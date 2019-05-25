@@ -13,10 +13,10 @@
         <mt-cell title="价格" v-model="sequenceInfo.price"></mt-cell>
         <mt-cell title="反应数" v-model="sequenceInfo.reactionNumber"></mt-cell>
         <mt-cell title="测序数" v-model="sequenceInfo.sequentTimes"></mt-cell>
-        <mt-cell title="是否双向测序" ><mt-switch disabled="true" v-model="sequenceInfo.isBothwaySequent"></mt-switch></mt-cell>
+        <mt-cell v-show="!teacherModifing" title="是否双向测序" ><mt-switch disabled="true" v-model="sequenceInfo.isBothwaySequent"></mt-switch></mt-cell>
         <mt-cell title="是否追加测序" ><mt-switch disabled="true" v-model="sequenceInfo.isAppend"></mt-switch></mt-cell>
-        <mt-cell title="是否缴费" ><mt-switch disabled="true" v-model="sequenceInfo.isCost"></mt-switch></mt-cell>
-        <mt-cell title="失败原因" v-if="sequenceInfo.status==3" v-model="sequenceInfo.failReason"></mt-cell>
+        <mt-cell v-show="!teacherModifing" title="是否缴费" ><mt-switch disabled="true" v-model="sequenceInfo.isCost"></mt-switch></mt-cell>
+        <mt-cell v-show="!teacherModifing" title="失败原因" v-if="sequenceInfo.status==3" v-model="sequenceInfo.failReason"></mt-cell>
         <div v-show="teacherModifing">
             <mt-radio
                     v-show="teacherModifing"
@@ -28,8 +28,8 @@
             <mt-cell title="是否缴费" ><mt-switch v-model="sequenceInfo.isCost"></mt-switch></mt-cell>
             <mt-field label="失败原因" v-if="sequenceInfo.status==3" v-model="sequenceInfo.failReason" placeholder="请输入失败原因"></mt-field>
         </div>
-        <p> <mt-button size="large" v-if="studentCanDelete" type="danger" @click="deletePrimer">删除引物单</mt-button> </p>
-        <p> <mt-button size="large" type="danger" v-if="teacherStatus" @click="updatePrimer">修改引物单</mt-button> </p>
+        <p> <mt-button size="large" v-if="studentCanDelete" type="danger" @click="deletePrimer">删除测序申请</mt-button> </p>
+        <p> <mt-button size="large" type="danger" v-if="teacherStatus" @click="updatePrimer">修改测序申请</mt-button> </p>
 
     </div>
 </template>
